@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-
 // task struct
 type Task struct {
 	id int
@@ -31,7 +30,13 @@ func AddTask(tasks []Task){
 
 // function ViewTasks(tasks []Task)
 func ViewTasks(tasks []Task){
-	
+	for _, task := range tasks {
+		if task.completed {
+			fmt.Printf("[X] %s\n", task.title)
+		} else {
+			fmt.Printf("[ ] %s\n", task.title)
+		}
+	}
 }
 
 
