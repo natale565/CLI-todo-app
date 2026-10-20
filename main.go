@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 // task struct
 type Task struct {
@@ -23,7 +28,29 @@ func DisplayMenu(){
 
 
 // function AddTask(tasks []Task)
-func AddTask(tasks []Task){
+func AddTask(tasks []Task) []Task{
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter Your Task Title: ")
+
+	input, err := reader.ReadString('\n')
+	if err != nil{
+		fmt.Println("An error occurred:", err)
+		return tasks
+	}
+
+	input = strings.TrimSpace(input)
+
+	nextId := len(tasks) + 1
+
+	newTask := Task{
+		id:        nextId,
+		title:     input,
+		completed: false,
+	}
+
+	tasks = append(tasks, newTask)
+
+	return tasks
 
 }
 
