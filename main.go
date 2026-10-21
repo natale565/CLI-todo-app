@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 // task struct
@@ -69,6 +69,29 @@ func ViewTasks(tasks []Task){
 
 
 // function CompleteTask(tasks []Task)
+func CompleteTask(tasks []Task){
+
+	ViewTasks(tasks)
+
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Please enter a task ID")
+
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error occurred.")
+	}
+	
+	input = strings.TrimSpace(input)
+	
+	taskChoice, err := strconv.Atoi(input)
+	if err != nil {
+		fmt.Println("No task ID found")
+	}
+	
+	for i, task := range tasks{
+}
+
+}
 
 
 // function DeleteTask(task []Task)
