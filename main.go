@@ -76,21 +76,21 @@ func ViewTasks(tasks []Task){
 
 func main() {
 
-	task := []Task{}
-
+	tasks := []Task{}
 	menuChoice := 0
+	reader := bufio.NewReader(os.Stdin)
 
 	for menuChoice != 5 {
 
 		DisplayMenu()
 
-		reader := bufio.NewReader(os.Stdin)
 
 		fmt.Println("Enter your choice.")
 
 		input, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Println("An error occurred:", err)
+			continue
 		}
 
 		input = strings.TrimSpace(input)
@@ -99,6 +99,21 @@ func main() {
 		if err != nil {
 			fmt.Println("Please enter a number from 1 to 5.")
 			continue
+		}
+
+		switch menuChoice {
+		case 1:
+			tasks = AddTask(tasks)
+		case 2:
+			ViewTasks(tasks)
+		case 3:
+			CompleteTask(tasks)
+		case 4:
+			tasks = DeleteTask(tasks)
+		case 5:
+			fmt.Println("Goodbye!")
+		default:
+			fmt.Println("Invalid menu option. Pick a number from 1 to 5")
 		}
 
 	}
