@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"strconv"
 )
 
 // task struct
@@ -75,6 +76,33 @@ func ViewTasks(tasks []Task){
 
 func main() {
 
+	task := []Task{}
+
+	menuChoice := 0
+
+	for menuChoice != 5 {
+
+		DisplayMenu()
+
+		reader := bufio.NewReader(os.Stdin)
+
+		fmt.Println("Enter your choice.")
+
+		input, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println("An error occurred:", err)
+		}
+
+		input = strings.TrimSpace(input)
+
+		menuChoice, err = strconv.Atoi(input)
+		if err != nil {
+			fmt.Println("Please enter a number from 1 to 5.")
+			continue
+		}
+
+	}
+	
 }
 
 
