@@ -79,6 +79,7 @@ func CompleteTask(tasks []Task){
 	input, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println("Error occurred.")
+		return
 	}
 	
 	input = strings.TrimSpace(input)
@@ -86,11 +87,22 @@ func CompleteTask(tasks []Task){
 	taskChoice, err := strconv.Atoi(input)
 	if err != nil {
 		fmt.Println("No task ID found")
+		return
 	}
-	
-	for i, task := range tasks{
-}
 
+	found := false
+
+	for i, task := range tasks{
+		if task.id == taskChoice{
+			tasks[i].completed = true
+			found = true
+			break
+
+		}
+	}
+	if !found{
+		fmt.Println("Task not found")
+}
 }
 
 
