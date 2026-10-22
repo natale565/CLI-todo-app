@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -100,13 +101,52 @@ func CompleteTask(tasks []Task){
 
 		}
 	}
-	if !found{
+	if !found {
 		fmt.Println("Task not found")
 }
 }
 
 
 // function DeleteTask(task []Task)
+func DeleteTask(tasks []Task) []Task{
+
+	ViewTasks(tasks)
+	
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Choose a task ID to delete.")
+
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("An Error occurred.")
+		return tasks
+	}
+
+	input = strings.TrimSpace(input)
+
+	taskChoice, err := strconv.Atoi(input)
+	if err != nil {
+		fmt.Println("No task ID found")
+		return tasks
+	}
+
+	found := false
+
+	for i, task := range tasks {
+		if task.id == taskChoice {
+			tasks = slices.Delete(tasks, i, i+1)
+			found = true
+			break
+
+		}
+		
+	}
+	if !found {
+		fmt.Println("Task not found")
+	}
+
+	return  tasks 
+
+}
 
 
 func main() {
