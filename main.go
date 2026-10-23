@@ -42,7 +42,15 @@ func AddTask(tasks []Task) []Task{
 
 	input = strings.TrimSpace(input)
 
-	nextId := len(tasks) + 1
+	maxID := 0
+
+	for _, task := range tasks{
+		if task.id > maxID{
+			maxID = task.id
+		}
+	}
+
+	nextId := maxID + 1
 
 	newTask := Task{
 		id:        nextId,
