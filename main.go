@@ -72,6 +72,13 @@ func AddTask(tasks []Task) []Task{
 
 // function ViewTasks(tasks []Task)
 func ViewTasks(tasks []Task){
+
+	if len(tasks) == 0 {
+		fmt.Println("No tasks found.")
+		return tasks
+	}
+
+
 	for _, task := range tasks {
 		if task.completed {
 			fmt.Printf("%d. [X] %s\n",task.id, task.title)
@@ -84,6 +91,12 @@ func ViewTasks(tasks []Task){
 
 // function CompleteTask(tasks []Task)
 func CompleteTask(tasks []Task){
+
+	if len(tasks) == 0 {
+		fmt.Println("No tasks found.")
+		return
+	}
+
 
 	ViewTasks(tasks)
 
@@ -122,6 +135,11 @@ func CompleteTask(tasks []Task){
 
 // function DeleteTask(task []Task)
 func DeleteTask(tasks []Task) []Task{
+
+	if len(tasks) == 0 {
+		fmt.Println("No tasks found.")
+		return tasks
+	}
 
 	ViewTasks(tasks)
 	
