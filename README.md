@@ -1,3 +1,3 @@
 # CLI-todo-app
 
-Command line todo app build with Go
+simple Command line todo app build with Go
