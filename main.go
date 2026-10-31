@@ -42,6 +42,11 @@ func AddTask(tasks []Task) []Task{
 
 	input = strings.TrimSpace(input)
 
+	if input == "" {
+		fmt.Println("Task title cannot be empty.")
+		return tasks
+	}
+
 	maxID := 0
 
 	for _, task := range tasks{
