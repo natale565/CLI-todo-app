@@ -74,9 +74,9 @@ func AddTask(tasks []Task) []Task{
 func ViewTasks(tasks []Task){
 	for _, task := range tasks {
 		if task.completed {
-			fmt.Printf("[X] %s\n", task.title)
+			fmt.Printf("%d. [X] %s\n",task.id, task.title)
 		} else {
-			fmt.Printf("[ ] %s\n", task.title)
+			fmt.Printf("%d. [ ] %s\n", task.id, task.title)
 		}
 	}
 }
