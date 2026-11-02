@@ -75,7 +75,7 @@ func ViewTasks(tasks []Task){
 
 	if len(tasks) == 0 {
 		fmt.Println("No tasks found.")
-		return tasks
+		return
 	}
 
 
