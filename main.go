@@ -20,12 +20,14 @@ type Task struct {
 // function DisplayMenu
 func DisplayMenu(){
 	fmt.Println("Task Manager")
+	fmt.Println()
 
 	fmt.Println("1. Add Task")
 	fmt.Println("2. View Tasks")
 	fmt.Println("3. Complete Task")
 	fmt.Println("4. Delete Task")
 	fmt.Println("5. Exit")
+	fmt.Println()
 }
 
 
@@ -33,6 +35,7 @@ func DisplayMenu(){
 func AddTask(tasks []Task) []Task{
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter Your Task Title: ")
+	
 
 	input, err := reader.ReadString('\n')
 	if err != nil{
@@ -64,6 +67,7 @@ func AddTask(tasks []Task) []Task{
 	}
 
 	tasks = append(tasks, newTask)
+	fmt.Println()
 
 	return tasks
 
@@ -191,7 +195,7 @@ func main() {
 		DisplayMenu()
 
 
-		fmt.Println("Enter your choice.")
+		fmt.Print("Enter your choice: ")
 
 		input, err := reader.ReadString('\n')
 		if err != nil {
