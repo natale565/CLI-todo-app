@@ -11,9 +11,9 @@ import (
 
 // task struct
 type Task struct {
-	id int
-	title string
-	completed bool
+	Id int
+	Title string
+	Completed bool
 }
 
 
@@ -46,24 +46,24 @@ func AddTask(tasks []Task) []Task{
 	input = strings.TrimSpace(input)
 
 	if input == "" {
-		fmt.Println("Task title cannot be empty.")
+		fmt.Println("Task Title cannot be empty.")
 		return tasks
 	}
 
 	maxID := 0
 
 	for _, task := range tasks{
-		if task.id > maxID{
-			maxID = task.id
+		if task.Id > maxID{
+			maxID = task.Id
 		}
 	}
 
 	nextId := maxID + 1
 
 	newTask := Task{
-		id:        nextId,
-		title:     input,
-		completed: false,
+		Id:        nextId,
+		Title:     input,
+		Completed: false,
 	}
 
 	tasks = append(tasks, newTask)
@@ -84,10 +84,10 @@ func ViewTasks(tasks []Task){
 
 
 	for _, task := range tasks {
-		if task.completed {
-			fmt.Printf("%d. [X] %s\n",task.id, task.title)
+		if task.Completed {
+			fmt.Printf("%d. [X] %s\n",task.Id, task.Title)
 		} else {
-			fmt.Printf("%d. [ ] %s\n", task.id, task.title)
+			fmt.Printf("%d. [ ] %s\n", task.Id, task.Title)
 		}
 	}
 }
@@ -124,8 +124,8 @@ func CompleteTask(tasks []Task){
 	found := false
 
 	for i, task := range tasks{
-		if task.id == taskChoice{
-			tasks[i].completed = true
+		if task.Id == taskChoice{
+			tasks[i].Completed = true
 			found = true
 			break
 
@@ -167,7 +167,7 @@ func DeleteTask(tasks []Task) []Task{
 	found := false
 
 	for i, task := range tasks {
-		if task.id == taskChoice {
+		if task.Id == taskChoice {
 			tasks = slices.Delete(tasks, i, i+1)
 			found = true
 			break
@@ -223,7 +223,7 @@ func main() {
 		case 5:
 			fmt.Println("Goodbye!")
 		default:
-			fmt.Println("Invalid menu option. Pick a number from 1 to 5")
+			fmt.Println("InvalId menu option. Pick a number from 1 to 5")
 		}
 
 	}
