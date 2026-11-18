@@ -124,6 +124,10 @@ Tutorials and lessons are useful for introducing new concepts, but working throu
 
 Even a small project like this provided practice with program structure, debugging, error handling, data management, and thinking through how different parts of an application should work together.
 
+## Coming Soon
+
+The ability to save tasks for later viewing.
+
 ## Author
 
 Christopher Natale
